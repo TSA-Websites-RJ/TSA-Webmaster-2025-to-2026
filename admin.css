@@ -1,0 +1,68 @@
+.admin-card {
+    max-width: 420px;
+    margin-top: 30px;
+}
+
+.admin-action-btn {
+    margin-right: 8px;
+}
+
+code {
+    background-color: #f1f1f1;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 45px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+
+.eye {
+    width: 22px;
+    height: 14px;
+    border: 2px solid #6bcf6b;
+    border-radius: 50% / 60%;
+    position: relative;
+    display: block;
+}
+
+
+.eye::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #6bcf6b;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.eye.hidden::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: #6bcf6b;
+    top: 50%;
+    left: -1px;
+    transform: rotate(45deg);
+}
