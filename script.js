@@ -115,7 +115,7 @@ const sendBtn = document.getElementById("aiSendBtn");
 let aiStep = 0;
 let aiAnswers = {};
 let aiQuestions = [
-    { id:"interest", text:"What are you interested in?", options:["Health & Fitness","Education","Finance","Food & Drink","Recreation","Community Safety","Environment","Transportation"] },
+    { id:"interest", text:"What are you interested in? Please type your choice exactly as seen below.", options:["Health & Fitness","Education","Finance","Food & Drink","Recreation","Community Safety","Environment","Transportation"] },
    
                                 { id:"format", text:"Do you prefer in-person or online resources?", options:["In-person","Online"] }
 ];
@@ -219,4 +219,5 @@ document.getElementById("requestForm").addEventListener("submit", e => {
     progress.requestsSubmitted++;
     localStorage.setItem("progress", JSON.stringify(progress));
 });
+
 
