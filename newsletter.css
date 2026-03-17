@@ -1,0 +1,95 @@
+.newsletter-container {
+
+    max-width: 600px;
+    margin: 40px auto;
+
+}
+
+.description {
+
+    font-size: 1.05rem;
+
+
+
+    color: #2a7a2a;
+    font-weight: 500;
+    margin-bottom: 25px;
+
+}
+
+                .field {
+                    margin-bottom: 15px;
+                }
+
+                .field label {
+                    display: block;
+                    font-size: 13px;
+                    color: #555;
+                    margin-bottom: 4px;
+                }
+
+    .field input {
+
+            display: block;
+            width: 100%;
+
+            padding: 8px;
+
+            font-size: 14px;
+
+            border-radius: 6px;
+            border: 1px solid #ccc;
+
+        }
+
+input[type="submit"] {
+
+    display: block;
+    width: 100%;
+
+
+
+    padding: 10px;
+    font-size: 15px;
+            background: linear-gradient(90deg,#85e085,#28a745);
+    color: white;
+    border: none;
+            border-radius: 8px;
+                font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+}
+
+input[type="submit"]:hover {
+
+        transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+
+}
+
+        #toast {
+            visibility: hidden;
+            position: fixed;
+
+            bottom: 30px;
+            right: 30px;
+
+            background: #333;
+            color: white;
+
+            padding: 14px 18px;
+
+            border-radius: 8px;
+            
+            font-size: 14px;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
