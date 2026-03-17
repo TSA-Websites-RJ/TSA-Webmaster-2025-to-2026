@@ -1,0 +1,42 @@
+
+.map-card {
+    background: linear-gradient(45deg, #f9f9f9, #e9ffe9);
+        border-radius: 14px;
+    border-left: 6px solid #6bcf6b;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.map-card:hover {
+    transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+    .map-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+    }
+
+    .map-container img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 14px;
+    }
+
+    .key-list li {
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+    }
+.key-box {
+    display: inline-block;
+            width: 16px;
+            height: 16px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.redd { background-color: #ff6b6b; }
