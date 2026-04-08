@@ -41,7 +41,7 @@ function loadPending(filterCategory = "") {
     pendingList.innerHTML = "";
 
     if (pending.length === 0) {
-        pendingList.innerHTML = `<p class="text-muted">No pending requests. Add some resources to approve or decline <a href = "./index.html/#requestForm">by clicking here</a>.</p>`;
+        pendingList.innerHTML = `<p class="text-muted">No pending requests. Add some resources to approve or decline <a href = "./index.html#requestForm">by clicking here</a>.</p>`;
         return;
     }
 
