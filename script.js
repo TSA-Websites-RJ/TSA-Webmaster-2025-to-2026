@@ -126,7 +126,7 @@ startBtn.addEventListener("click", () => {
     aiAnswers = JSON.parse(localStorage.getItem("aiMemory")) || {};
     aiChatBody.innerHTML = "";
 
-    setTimeout(() => showAIMessage("Hi! I'm ResBot 🤖. I will help you find the best community resources. Ready? Say 'Yes' to start."), 500);
+    setTimeout(() => showAIMessage("Hi! I'm ResBot 🤖. I will help you find the best community resources. Enter the requests exactly as shown. Capitalization, spacing, and hyphens matter! Ready? Say 'Yes' to start."), 500);
 });
 
 closeBtn.addEventListener("click", () => aiModal.style.display = "none");
