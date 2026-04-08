@@ -2,14 +2,14 @@ const resources = JSON.parse(localStorage.getItem("resources")) || [];
 const pending = JSON.parse(localStorage.getItem("pending")) || [];
 
 const lockedResources = [
-    { title: "Fitness Center", description: "A top-notch gym with group classes.", category: "Health & Fitness" },
-    { title: "Chess Tournaments", description: "Contact chess@riversidemeadows.com.", category: "Recreation" },
-    { title: "Career & Learning Hub", description: "Tutoring and career classes.", category: "Education" },
-    { title: "Neighborhood Watch", description: "Email security@riversidemeadows.com", category: "Community Safety" },
-    { title: "Riverside Credit Union", description: "Low-interest loans.", category: "Finance" },
-    { title: "River Clean-up Crew", description: "Email clean@riversidemeadows.com", category: "Environment" },
-    { title: "Senior Shuttles", description: "Free rides for ages 65+.", category: "Transportation" },
-    { title: "Lola's Cafe", description: "Highest rated restaurant!", category: "Food & Drink" }
+    { title: "Fitness Center 💪", description: "A top-notch gym with group classes.", category: "Health & Fitness" },
+    { title: "Chess Tournaments ♟️", description: "Contact chess@riversidemeadows.com.", category: "Recreation" },
+    { title: "Career & Learning Hub 📚", description: "Tutoring and career classes.", category: "Education" },
+    { title: "Neighborhood Watch 👀", description: "Email security@riversidemeadows.com", category: "Community Safety" },
+    { title: "Riverside Credit Union 💵", description: "Low-interest loans.", category: "Finance" },
+    { title: "River Clean-up Crew 🗑️", description: "Email clean@riversidemeadows.com", category: "Environment" },
+    { title: "Senior Shuttles 🚌", description: "Free rides for ages 65+.", category: "Transportation" },
+    { title: "Lola's Cafe 🍽️", description: "Highest rated restaurant!", category: "Food & Drink" }
 ];
 
 const list = document.getElementById("resourceList");
