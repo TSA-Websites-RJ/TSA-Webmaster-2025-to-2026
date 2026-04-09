@@ -7,6 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+  
   <style>
     :root {
   --bg: #f9f9f9;
@@ -37,29 +41,31 @@
       text-decoration: none;
     }
 
-    .page-wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 28px 20px 40px;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent-dark);
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .hero {
-      background: linear-gradient(45deg, #f9f9f9, #ccffcc);
-      border: 1px solid rgba(37, 99, 235, 0.12);
-      border-radius: 26px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-      margin-bottom: 22px;
-    }
+        .page-wrap {
+          max-width: 1180px;
+          
+          
+          margin: 0 auto;
+          padding: 28px 20px 40px;
+        }
+    
+        .back-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: var(--accent-dark);
+          font-weight: 700;
+          margin-bottom: 18px;
+        }
+    
+        .hero {
+          background: linear-gradient(45deg, #f9f9f9, #ccffcc);
+          border: 1px solid rgba(37, 99, 235, 0.12);
+          border-radius: 26px;
+          padding: 26px;
+          box-shadow: var(--shadow);
+          margin-bottom: 22px;
+        }
 
     h1 {
       margin: 0 0 8px;
@@ -82,7 +88,7 @@
 
     .calendar-card,
     .events-card {
-      background: var(--card);
+                      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 24px;
       box-shadow: var(--shadow);
@@ -122,31 +128,31 @@
       align-items: center;
     }
 
-    button,
-    select {
-      font: inherit;
-    }
-
-    .btn,
-    .select {
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text);
-      border-radius: 12px;
-      padding: 10px 14px;
-      font-weight: 700;
-    }
-
-    .btn {
-      cursor: pointer;
-      transition: 0.18s ease;
-    }
-
-    .btn {
-  background-color: #ccffcc;
-  border: none;
-  font-weight: 600;
-}
+                    button,
+                    select {
+                      font: inherit;
+                    }
+                
+                    .btn,
+                    .select {
+                      border: 1px solid var(--border);
+                      background: #fff;
+                      color: var(--text);
+                      border-radius: 12px;
+                      padding: 10px 14px;
+                      font-weight: 700;
+                    }
+                
+                    .btn {
+                      cursor: pointer;
+                      transition: 0.18s ease;
+                    }
+                
+                    .btn {
+                  background-color: #ccffcc;
+                  border: none;
+                  font-weight: 600;
+                }
 
 .btn:hover {
   background-color: #a0dea0;
@@ -217,23 +223,23 @@
       font-size: 1.2rem;
     }
 
-    .events-card p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .event-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .event-item {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
-      background: #fafcff;
-    }
+                        .events-card p {
+                          margin: 0 0 18px;
+                          color: var(--muted);
+                          line-height: 1.65;
+                        }
+                    
+                        .event-list {
+                          display: grid;
+                          gap: 12px;
+                        }
+                    
+                        .event-item {
+                          border: 1px solid var(--border);
+                          border-radius: 16px;
+                          padding: 14px;
+                          background: #fafcff;
+                        }
 
     .event-item h4 {
       margin: 0 0 6px;
@@ -274,7 +280,7 @@
       font-size: 1.4rem;
     }
 
-    .modal-panel p {
+                                .modal-panel p {
       color: var(--muted);
       line-height: 1.7;
       margin: 0 0 12px;
@@ -308,10 +314,10 @@
         gap: 8px;
       }
 
-      .day {
-        min-height: 92px;
-        padding: 8px;
-      }
+                        .day {
+                          min-height: 92px;
+                          padding: 8px;
+                        }
 
       .event-chip {
         font-size: 0.68rem;
@@ -357,11 +363,11 @@
             <button class="btn" id="nextMonth">Next →</button>
             <select class="select" id="categoryFilter" aria-label="Filter events by category">
               <option value="all">All categories</option>
-              <option value="Education">Education</option>
-              <option value="Community">Community</option>
-              <option value="Health & Wellness">Health & Wellness</option>
-              <option value="Food Support">Food Support</option>
-              <option value="Environment">Environment</option>
+                      <option value="Education">Education</option>
+                      <option value="Community">Community</option>
+                      <option value="Health & Wellness">Health & Wellness</option>
+                      <option value="Food Support">Food Support</option>
+                      <option value="Environment">Environment</option>
               <option value="Transportation">Transportation</option>
             </select>
           </div>
@@ -410,22 +416,22 @@
         category: 'Education',
         description: 'Free homework help, SAT prep support, and peer tutoring for middle and high school students.'
       },
-      {
-        title: 'Neighborhood Watch Meeting',
-        date: '2026-04-18',
-        time: '6:30 PM - 7:30 PM',
-        location: 'Neighborhood Watch HQ',
-        category: 'Community',
-        description: 'A monthly meeting covering safety updates, neighborhood alerts, and volunteer sign-up opportunities.'
-      },
-      {
-        title: 'Senior Shuttle Sign-Up Session',
-        date: '2026-04-21',
-        time: '10:00 AM - 12:00 PM',
-        location: 'Community Center Lobby',
-        category: 'Transportation',
-        description: 'Residents can register for the senior shuttle service and ask questions about weekly transportation routes.'
-      },
+                {
+                  title: 'Neighborhood Watch Meeting',
+                  date: '2026-04-18',
+                  time: '6:30 PM - 7:30 PM',
+                  location: 'Neighborhood Watch HQ',
+                  category: 'Community',
+                  description: 'A monthly meeting covering safety updates, neighborhood alerts, and volunteer sign-up opportunities.'
+                },
+                {
+                  title: 'Senior Shuttle Sign-Up Session',
+                  date: '2026-04-21',
+                  time: '10:00 AM - 12:00 PM',
+                  location: 'Community Center Lobby',
+                  category: 'Transportation',
+                  description: 'Residents can register for the senior shuttle service and ask questions about weekly transportation routes.'
+                },
       {
         title: 'Family Fitness Saturday',
         date: '2026-04-25',
@@ -442,33 +448,33 @@
         category: 'Food Support',
         description: 'A local nonprofit distributes groceries and pantry staples to families in the community.'
       },
-      {
-        title: 'Youth Chess Tournament',
-        date: '2026-05-02',
-        time: '1:00 PM - 4:00 PM',
-        location: 'Community Park Pavilion',
-        category: 'Community',
-        description: 'Friendly tournament brackets for youth players with beginner and intermediate divisions.'
-      },
-      {
-        title: 'Resume Workshop',
-        date: '2026-05-06',
-        time: '5:30 PM - 6:45 PM',
-        location: 'Career & Learning Hub',
-        category: 'Education',
-        description: 'Students and adults can get resume feedback, interview advice, and job readiness support.'
-      }
+                        {
+                          title: 'Youth Chess Tournament',
+                          date: '2026-05-02',
+                          time: '1:00 PM - 4:00 PM',
+                          location: 'Community Park Pavilion',
+                          category: 'Community',
+                          description: 'Friendly tournament brackets for youth players with beginner and intermediate divisions.'
+                        },
+                        {
+                          title: 'Resume Workshop',
+                          date: '2026-05-06',
+                          time: '5:30 PM - 6:45 PM',
+                          location: 'Career & Learning Hub',
+                          category: 'Education',
+                          description: 'Students and adults can get resume feedback, interview advice, and job readiness support.'
+                        }
     ];
 
     const weekdayRow = document.getElementById('weekdayRow');
-    const calendarDays = document.getElementById('calendarDays');
-    const monthLabel = document.getElementById('monthLabel');
-    const upcomingList = document.getElementById('upcomingList');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const modal = document.getElementById('eventModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMeta = document.getElementById('modalMeta');
-    const modalDescription = document.getElementById('modalDescription');
+            const calendarDays = document.getElementById('calendarDays');
+            const monthLabel = document.getElementById('monthLabel');
+            const upcomingList = document.getElementById('upcomingList');
+            const categoryFilter = document.getElementById('categoryFilter');
+      const modal = document.getElementById('eventModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMeta = document.getElementById('modalMeta');
+     const modalDescription = document.getElementById('modalDescription');
 
     const today = new Date();
     let currentMonth = today.getMonth();
@@ -483,10 +489,10 @@
     }
 
     function formatDate(dateString) {
-      const date = new Date(dateString + 'T00:00:00');
-      return new Intl.DateTimeFormat('en-US', {
-        weekday: 'short',
-        month: 'short',
+                  const date = new Date(dateString + 'T00:00:00');
+                  return new Intl.DateTimeFormat('en-US', {
+                    weekday: 'short',
+                    month: 'short',
         day: 'numeric',
         year: 'numeric'
       }).format(date);
@@ -507,7 +513,7 @@
 
     function renderUpcoming() {
       const now = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-      const upcoming = filteredEvents()
+                  const upcoming = filteredEvents()
         .map(event => ({ ...event, sortDate: new Date(event.date + 'T00:00:00') }))
         .filter(event => event.sortDate >= now)
         .sort((a, b) => a.sortDate - b.sortDate)
@@ -529,10 +535,10 @@
     function renderCalendar() {
       const firstDay = new Date(currentYear, currentMonth, 1);
       const lastDay = new Date(currentYear, currentMonth + 1, 0);
-      const daysInMonth = lastDay.getDate();
-      const startWeekday = firstDay.getDay();
-      const previousMonthDays = new Date(currentYear, currentMonth, 0).getDate();
-      const visibleEvents = filteredEvents();
+              const daysInMonth = lastDay.getDate();
+              const startWeekday = firstDay.getDay();
+              const previousMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+              const visibleEvents = filteredEvents();
 
       monthLabel.textContent = new Intl.DateTimeFormat('en-US', {
         month: 'long',
@@ -549,7 +555,7 @@
       }
 
       for (let day = 1; day <= daysInMonth; day++) {
-        const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         const dayEvents = visibleEvents.filter(event => event.date === dateKey);
         const isToday = day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
 
@@ -567,7 +573,7 @@
 
         if (dayEvents.length > 2) {
           const more = document.createElement('button');
-          more.className = 'event-chip';
+                        more.className = 'event-chip';
           more.textContent = `+${dayEvents.length - 2} more`;
           more.addEventListener('click', () => openModal(dayEvents[0]));
           dayCell.appendChild(more);
@@ -587,10 +593,10 @@
 
     document.getElementById('prevMonth').addEventListener('click', () => {
       currentMonth--;
-      if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
-      }
+              if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+              }
       renderCalendar();
     });
 
@@ -609,10 +615,10 @@
       renderCalendar();
     });
 
-    categoryFilter.addEventListener('change', () => {
-      renderCalendar();
-      renderUpcoming();
-    });
+              categoryFilter.addEventListener('change', () => {
+                renderCalendar();
+                renderUpcoming();
+              });
 
     document.getElementById('closeModal').addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
