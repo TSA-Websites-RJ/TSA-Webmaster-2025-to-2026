@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Calendar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #dbe4f0;
+      --accent: #2563eb;
+      --accent-soft: #eaf2ff;
+      --accent-dark: #1d4ed8;
+      --shadow: 0 10px 28px rgba(37, 99, 235, 0.10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, #f3f7fc 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.10), rgba(37, 99, 235, 0.03));
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .calendar-shell {
+      display: grid;
+      gap: 22px;
+    }
+
+    .calendar-card,
+    .events-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .calendar-header {
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+    }
+
+    .calendar-title {
+      display: grid;
+      gap: 5px;
+    }
+
+    .calendar-title h2 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    .calendar-title span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .calendar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    .btn,
+    .select {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 700;
+    }
+
+    .btn {
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-soft);
+      border-color: #bfd4ff;
+    }
+
+    .calendar-grid-wrap {
+      padding: 18px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .weekday {
+      text-align: center;
+      font-weight: 800;
+      color: var(--muted);
+      font-size: 0.86rem;
+      padding: 6px 0 2px;
+    }
+
+    .day {
+      min-height: 118px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .day.muted {
+      background: #f6f8fb;
+      color: #a1acba;
+    }
+
+    .day.today {
+      border: 2px solid var(--accent);
+      background: linear-gradient(180deg, #ffffff 0%, #f2f7ff 100%);
+    }
+
+    .day-number {
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    .event-chip {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      border: 1px solid #cfe0ff;
+      border-radius: 12px;
+      padding: 6px 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      line-height: 1.25;
+      cursor: pointer;
+    }
+
+    .events-card {
+      padding: 22px;
+    }
+
+    .events-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .events-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .event-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .event-item {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fafcff;
+    }
+
+    .event-item h4 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .event-meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(17, 24, 39, 0.48);
+      z-index: 20;
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      width: min(560px, 100%);
+      background: #fff;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.18);
+      padding: 24px;
+    }
+
+    .modal-panel h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .modal-panel p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 12px;
+    }
+
+    .close-btn {
+      width: 100%;
+      margin-top: 4px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background: var(--accent-dark);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 18px 20px 8px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      .calendar-grid {
+        gap: 8px;
+      }
+
+      .day {
+        min-height: 92px;
+        padding: 8px;
+      }
+
+      .event-chip {
+        font-size: 0.68rem;
+      }
+
+      .calendar-header {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-wrap">
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <section class="hero">
+      <h1>Community Calendar</h1>
+      <p>
+        Explore upcoming community programs, tutoring sessions, wellness activities, nonprofit events, and neighborhood gatherings happening in Riverside Meadows.
+      </p>
+    </section>
+
+    <section class="calendar-shell">
+      <article class="calendar-card">
+        <div class="calendar-header">
+          <div class="calendar-title">
+            <h2 id="monthLabel">April 2026</h2>
+            <span>Browse events by month and category.</span>
+          </div>
+
+          <div class="calendar-actions">
+            <button class="btn" id="prevMonth">← Prev</button>
+            <button class="btn" id="todayBtn">Today</button>
+            <button class="btn" id="nextMonth">Next →</button>
+            <select class="select" id="categoryFilter" aria-label="Filter events by category">
+              <option value="all">All categories</option>
+              <option value="Education">Education</option>
+              <option value="Community">Community</option>
+              <option value="Health & Wellness">Health & Wellness</option>
+              <option value="Food Support">Food Support</option>
+              <option value="Environment">Environment</option>
+              <option value="Transportation">Transportation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calendar-grid-wrap">
+          <div class="calendar-grid" id="weekdayRow"></div>
+          <div class="calendar-grid" id="calendarDays"></div>
+        </div>
+      </article>
+
+      <article class="events-card">
+        <h3>Upcoming Events</h3>
+        <p>Click any event on the calendar for more details.</p>
+        <div class="event-list" id="upcomingList"></div>
+      </article>
+    </section>
+  </main>
+
+  <div class="modal" id="eventModal" aria-hidden="true">
+    <div class="modal-panel">
+      <h3 id="modalTitle">Event Title</h3>
+      <p id="modalMeta"></p>
+      <p id="modalDescription"></p>
+      <button class="close-btn" id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <footer>© 2026 Riverside Meadows Community Resource Hub</footer>
+
+  <script>
+    const events = [
+      {
+        title: 'Community Garden Volunteer Day',
+        date: '2026-04-12',
+        time: '9:00 AM - 11:30 AM',
+        location: 'Riverside Community Garden',
+        category: 'Environment',
+        description: 'Residents help plant seasonal vegetables, clean beds, and learn beginner gardening tips from local volunteers.'
+      },
+      {
+        title: 'Career & Learning Hub Tutoring Night',
+        date: '2026-04-15',
+        time: '5:00 PM - 7:00 PM',
+        location: 'Career & Learning Hub',
+        category: 'Education',
+        description: 'Free homework help, SAT prep support, and peer tutoring for middle and high school students.'
+      },
+      {
+        title: 'Neighborhood Watch Meeting',
+        date: '2026-04-18',
+        time: '6:30 PM - 7:30 PM',
+        location: 'Neighborhood Watch HQ',
+        category: 'Community',
+        description: 'A monthly meeting covering safety updates, neighborhood alerts, and volunteer sign-up opportunities.'
+      },
+      {
+        title: 'Senior Shuttle Sign-Up Session',
+        date: '2026-04-21',
+        time: '10:00 AM - 12:00 PM',
+        location: 'Community Center Lobby',
+        category: 'Transportation',
+        description: 'Residents can register for the senior shuttle service and ask questions about weekly transportation routes.'
+      },
+      {
+        title: 'Family Fitness Saturday',
+        date: '2026-04-25',
+        time: '8:30 AM - 10:00 AM',
+        location: 'Fitness Center',
+        category: 'Health & Wellness',
+        description: 'A free family fitness event with beginner-friendly workouts, stretching, and hydration tips.'
+      },
+      {
+        title: 'Food Pantry Pop-Up',
+        date: '2026-04-27',
+        time: '4:00 PM - 6:00 PM',
+        location: 'Riverside Church Parking Lot',
+        category: 'Food Support',
+        description: 'A local nonprofit distributes groceries and pantry staples to families in the community.'
+      },
+      {
+        title: 'Youth Chess Tournament',
+        date: '2026-05-02',
+        time: '1:00 PM - 4:00 PM',
+        location: 'Community Park Pavilion',
+        category: 'Community',
+        description: 'Friendly tournament brackets for youth players with beginner and intermediate divisions.'
+      },
+      {
+        title: 'Resume Workshop',
+        date: '2026-05-06',
+        time: '5:30 PM - 6:45 PM',
+        location: 'Career & Learning Hub',
+        category: 'Education',
+        description: 'Students and adults can get resume feedback, interview advice, and job readiness support.'
+      }
+    ];
+
+    const weekdayRow = document.getElementById('weekdayRow');
+    const calendarDays = document.getElementById('calendarDays');
+    const monthLabel = document.getElementById('monthLabel');
+    const upcomingList = document.getElementById('upcomingList');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const modal = document.getElementById('eventModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalDescription = document.getElementById('modalDescription');
+
+    const today = new Date();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
+
+    const weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    weekdayRow.innerHTML = weekdayNames.map(day => `<div class="weekday">${day}</div>`).join('');
+
+    function filteredEvents() {
+      const selected = categoryFilter.value;
+      return selected === 'all' ? events : events.filter(event => event.category === selected);
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString + 'T00:00:00');
+      return new Intl.DateTimeFormat('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      }).format(date);
+    }
+
+    function openModal(event) {
+      modalTitle.textContent = event.title;
+      modalMeta.innerHTML = `<strong>${formatDate(event.date)}</strong><br>${event.time}<br>${event.location}<br>${event.category}`;
+      modalDescription.textContent = event.description;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function renderUpcoming() {
+      const now = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      const upcoming = filteredEvents()
+        .map(event => ({ ...event, sortDate: new Date(event.date + 'T00:00:00') }))
+        .filter(event => event.sortDate >= now)
+        .sort((a, b) => a.sortDate - b.sortDate)
+        .slice(0, 6);
+
+      upcomingList.innerHTML = upcoming.map(event => `
+        <div class="event-item">
+          <h4>${event.title}</h4>
+          <div class="event-meta">
+            ${formatDate(event.date)}<br>
+            ${event.time}<br>
+            ${event.location}<br>
+            ${event.category}
+          </div>
+        </div>
+      `).join('') || '<div class="event-item"><div class="event-meta">No events match this category yet.</div></div>';
+    }
+
+    function renderCalendar() {
+      const firstDay = new Date(currentYear, currentMonth, 1);
+      const lastDay = new Date(currentYear, currentMonth + 1, 0);
+      const daysInMonth = lastDay.getDate();
+      const startWeekday = firstDay.getDay();
+      const previousMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+      const visibleEvents = filteredEvents();
+
+      monthLabel.textContent = new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        year: 'numeric'
+      }).format(firstDay);
+
+      calendarDays.innerHTML = '';
+
+      for (let i = startWeekday - 1; i >= 0; i--) {
+        const muted = document.createElement('div');
+        muted.className = 'day muted';
+        muted.innerHTML = `<div class="day-number">${previousMonthDays - i}</div>`;
+        calendarDays.appendChild(muted);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const dayEvents = visibleEvents.filter(event => event.date === dateKey);
+        const isToday = day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
+
+        const dayCell = document.createElement('div');
+        dayCell.className = `day ${isToday ? 'today' : ''}`.trim();
+        dayCell.innerHTML = `<div class="day-number">${day}</div>`;
+
+        dayEvents.slice(0, 2).forEach(event => {
+          const chip = document.createElement('button');
+          chip.className = 'event-chip';
+          chip.textContent = `${event.time.split(' - ')[0]} • ${event.title}`;
+          chip.addEventListener('click', () => openModal(event));
+          dayCell.appendChild(chip);
+        });
+
+        if (dayEvents.length > 2) {
+          const more = document.createElement('button');
+          more.className = 'event-chip';
+          more.textContent = `+${dayEvents.length - 2} more`;
+          more.addEventListener('click', () => openModal(dayEvents[0]));
+          dayCell.appendChild(more);
+        }
+
+        calendarDays.appendChild(dayCell);
+      }
+
+      const remaining = (7 - (calendarDays.children.length % 7)) % 7;
+      for (let i = 1; i <= remaining; i++) {
+        const muted = document.createElement('div');
+        muted.className = 'day muted';
+        muted.innerHTML = `<div class="day-number">${i}</div>`;
+        calendarDays.appendChild(muted);
+      }
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar();
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      renderCalendar();
+    });
+
+    document.getElementById('todayBtn').addEventListener('click', () => {
+      currentMonth = today.getMonth();
+      currentYear = today.getFullYear();
+      renderCalendar();
+    });
+
+    categoryFilter.addEventListener('change', () => {
+      renderCalendar();
+      renderUpcoming();
+    });
+
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    renderCalendar();
+    renderUpcoming();
+  </script>
+</body>
+</html>
