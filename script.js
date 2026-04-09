@@ -2,14 +2,14 @@ const resources = JSON.parse(localStorage.getItem("resources")) || [];
 const pending = JSON.parse(localStorage.getItem("pending")) || [];
 
 const lockedResources = [
-    { title: "Fitness Center 💪", description: "A top-notch gym with group classes.", category: "Health & Fitness" },
-    { title: "Chess Tournaments ♟️", description: "Contact chess@riversidemeadows.com.", category: "Recreation" },
-    { title: "Career & Learning Hub 📚", description: "Tutoring and career classes.", category: "Education" },
-    { title: "Neighborhood Watch 👀", description: "Email security@riversidemeadows.com", category: "Community Safety" },
-    { title: "Riverside Credit Union 💵", description: "Low-interest loans.", category: "Finance" },
-    { title: "River Clean-up Crew 🗑️", description: "Email clean@riversidemeadows.com", category: "Environment" },
-    { title: "Senior Shuttles 🚌", description: "Free rides for ages 65+.", category: "Transportation" },
-    { title: "Lola's Cafe 🍽️", description: "Highest rated restaurant!", category: "Food & Drink" }
+    { title: "Fitness Center 💪", description: "A top-notch gym facility that provides an extensive range of free activities. These activities include equipment, free weights, strength training, and group classes. This center was designed with any body type in mind. So whether you look like Captain America or Homer Simpson, come join us at Riverside Meadows' Fitness Center. Open 24 hours a day; closed Sundays.", category: "Health & Fitness" },
+    { title: "Chess Tournaments ♟️", description: "We host many chess tournaments here at Riverside Meadows, and love to accommodate players of all ages and skill levels. At our tournaments, participants can sharpen their skills, expand their knowledge of the game, and connect with other chess players. To join the tournament, contact chess@riversidemeadows.com.", category: "Recreation" },
+    { title: "Career & Learning Hub 📚", description: "The Career & Learning Hub at Riverside Meadows is a center for educational growth and excellence. By providing before and after school tutoring for students and increasing readiness in the workforce, the Career & Learning Center accounts for the educational needs of all ages. We also provide training for certifications and college readiness courses for those seeking higher education.", category: "Education" },
+    { title: "Neighborhood Watch 👀", description: "Neighborhood Watch HQ ensures community safety and carries out crime prevention initiatives. Residents can report concerns or crimes that may affect the overall well-being of other residents' communities. This in turn strengthens community awareness and cooperation. Email security@riversidemeadows.com to contribute.", category: "Community Safety" },
+    { title: "Riverside Credit Union 💵", description: "The Riverside Credit Union is a place where residents go to receive financial assistance with their savings accounts, loans, and financial education. By using accessible and trustworthy banking, the residents experience a fine experience for setting up their finances.", category: "Finance" },
+    { title: "River Clean-up Crew 🗑️", description: "The River Side Clean-Up Crew is dedicated to keeping our beautiful river clean. We love to include all of our community in this hands-on experience, and our members often report feeling happiness and humility after engaging in these activities. Help us keep our community and families safe and healthy and email clean@riversidemeadows.com to join.", category: "Environment" },
+    { title: "Senior Shuttles 🚌", description: "Transportation is a major problem for senior citizens living by themselves. Because of this, many senior citizens often stay indoors and do not explore our community to the fullest extent possible. Thus, we have incorporated senior shuttles into our communities to help our lovely senior citizens explore Riverside Meadows.", category: "Transportation" },
+    { title: "Lola's Cafe 🍽️", description: "Looking for a welcoming place where you can enjoy meals, coffee, and spend time with friends? Lola’s Cafe is your place. A cafe that was founded when Riverside Meadows was first established 54 years ago, Lola’s Cafe provides a relaxing setting where residents can come and unwind after a long day. Hours of Operation: closed on Tuesdays; open 11 AM to 11 PM all other days.", category: "Food & Drink" }
 ];
 
 const list = document.getElementById("resourceList");
